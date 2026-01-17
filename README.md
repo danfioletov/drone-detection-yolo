@@ -5,6 +5,10 @@ It starts with a baseline model trained on public drone/bird datasets and then n
 
 > Educational / research project. No operational use.
 
+## Demo
+
+![Inference demo](assets/output-ezgif.com-video-to-gif-converter.gif)
+
 ---
 
 ## Project Goals

@@ -1,0 +1,13 @@
+# Path to the root of your dataset
+path: /content/drive/MyDrive/datasets/dataset_drones_split
+
+# Train/val/test image directories (relative to 'path')
+train: images/train
+val: images/val
+test: images/test
+
+# Number of classes
+nc: 1
+
+# Class names
+names: ['shahed']

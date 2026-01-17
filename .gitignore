@@ -1,0 +1,50 @@
+# =====================
+# Model weights
+# =====================
+*.pt
+*.onnx
+*.engine
+
+# =====================
+# Training / inference outputs
+# =====================
+runs/
+wandb/
+output.mp4
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# =====================
+# Datasets & generated data
+# =====================
+data/
+dataset/
+datasets/
+backgrounds/
+sprites/
+images/
+labels/
+out/
+
+# =====================
+# Blender / synthetic artifacts
+# =====================
+*.blend1
+__pycache__/
+
+# =====================
+# Python / Jupyter
+# =====================
+.venv/
+.env
+*.pyc
+.ipynb_checkpoints/
+
+# =====================
+# OS / IDE
+# =====================
+.DS_Store
+.vscode/
+.idea/

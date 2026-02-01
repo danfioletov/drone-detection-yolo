@@ -112,10 +112,21 @@ def pick_area_ratio():
 
 def compose_one(bg_path, sprite_path, out_w=640, out_h=640, alpha_thresh=8):
     # Background (BGR)
-    bg = cv2.imread(bg_path, cv2.IMREAD_COLOR)
-    if bg is None:
+    bg_full = cv2.imread(bg_path, cv2.IMREAD_COLOR)
+    if bg_full is None:
         raise RuntimeError(f"Failed to read background: {bg_path}")
-    bg = cv2.resize(bg, (out_w, out_h), interpolation=cv2.INTER_AREA)
+
+    bh_orig, bw_orig = bg_full.shape[:2]
+    
+    # Crop to square and resize to target size
+    if bw_orig < out_w or bh_orig < out_h:
+        bg = cv2.resize(bg_full, (out_w, out_h), interpolation=cv2.INTER_CUBIC)
+    else:
+        max_x = bw_orig - out_w
+        max_y = bh_orig - out_h
+        rand_x = random.randint(0, max_x)
+        rand_y = random.randint(0, max_y)
+        bg = bg_full[rand_y:rand_y + out_h, rand_x:rand_x + out_w]
 
     # Sprite (BGRA)
     sprite = read_sprite_rgba(sprite_path)

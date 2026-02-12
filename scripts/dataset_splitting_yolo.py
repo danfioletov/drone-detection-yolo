@@ -1,14 +1,16 @@
+import os
 import random
+import argparse
 import shutil
 from pathlib import Path
 
 
 def split_yolo_dataset(
-    src_dir="dataset_drones",
-    dst_dir="dataset_drones_split",
-    train_ratio=0.70,
-    val_ratio=0.20,
-    test_ratio=0.10,
+    src_dir,
+    dst_dir,
+    train_ratio,
+    val_ratio,
+    test_ratio,
     seed=42,
     copy=True
 ):
@@ -73,4 +75,17 @@ def split_yolo_dataset(
     print(f"Output: {dst_dir.resolve()}")
 
 if __name__ == "__main__":
-    split_yolo_dataset(src_dir="dataset_drones", dst_dir="dataset_drones_split", seed=42, copy=True)
+    argv = []
+    if "--" in os.sys.argv:
+        argv = os.sys.argv[os.sys.argv.index("--") + 1:]
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", required=True, help="Source folder with images and labels")
+    parser.add_argument("--out", required=True, help="Output folder for sprites")
+    parser.add_argument("--train_ratio", type=float, default=0.70, help="Train split ratio (0.7 default)")
+    parser.add_argument("--val_ratio", type=float, default=0.20, help="Validation split ratio (0.2 default)")
+    parser.add_argument("--test_ratio", type=float, default=0.10, help="Test split ratio (0.1 default)")
+    args = parser.parse_args(argv)
+
+    split_yolo_dataset(src_dir=args.source,dst_dir=args.out,train_ratio=args.train_ratio,val_ratio=args.val_ratio,test_ratio=args.test_ratio)
+

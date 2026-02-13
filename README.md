@@ -7,8 +7,8 @@ It starts with a baseline model trained on public drone/bird datasets and then n
 
 ## Demo
 
-![Inference demo](output_3_2.gif)
-![Inference demo](output_3_3.gif)
+![Inference demo](assets/output_3_2.gif)
+![Inference demo](assets/output_3_3.gif)
 
 ---
 

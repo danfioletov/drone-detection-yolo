@@ -96,10 +96,10 @@ To get an honest estimate, I collected and manually labeled a **real test set**:
 82 frames from public videos, 138 Shahed instances, 5 frames without drones.
 The split is done **by video**, so no video appears in both val and test.
 
-| Model | Training data | mAP50 (synthetic val) | P | R | mAP50 | mAP50-95 |
+| Model | mAP50 (synthetic val) | Training data | P | R | mAP50 | mAP50-95 |
 |---|---|---|---|---|---|---|
-| A | Public drone datasets (Drone vs Bird, Drone Detection) | — | 0.446 | **0.428** | **0.332** | **0.177** |
-| B | A + synthetic Shahed v0.1 | 0.994 | 0.457 | 0.210 | 0.203 | 0.133 |
+| A | Public drone datasets (Drone vs Bird, Drone Detection) | — | 0.483 | **0.550** | **0.428** | **0.265** |
+| B | A + synthetic Shahed v0.1 | 0.994 |0.373 | 0.388 | 0.298 | 0.201 |
 
 *Real test set. YOLOv8s (11.1M params), imgsz=640, Ultralytics 8.4.215.
 P and R are reported at the confidence threshold that maximizes F1.*
@@ -110,7 +110,7 @@ P and R are reported at the confidence threshold that maximizes F1.*
 
 ### Findings
 
-- **Domain gap:** model B drops from mAP50 0.994 on synthetic val to 0.203 on real frames.
+- **Domain gap:** model B drops from mAP50 0.483 on synthetic val to 0.373 on real frames.
 - **Synthetic v0.1 hurt recall:** fine-tuning on synthetic data halved recall
   (0.43 → 0.21, i.e. 59 → 29 of 138 drones found). 
 - **Likely causes:**

@@ -1,0 +1,6 @@
+path: '/content/drive/MyDrive/Computer Vision/datasets/real_shahed'
+train: test/images   # заглушка, Ultralytics вимагає це поле
+val: val/images      # якщо val немає — напишіть test/images
+test: test/images
+nc: 1
+names: ['UAV']
